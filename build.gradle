@@ -14,8 +14,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url "http://dl.bintray.com/populov/maven" }
         jcenter()
-    }
+        mavenCentral()    }
 }
 
 task clean(type: Delete) {

@@ -3,4 +3,17 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+
+
+
+
+
+    <color name="accent">#3797C7</color>
+    <color name="background">#F9F9F9</color>
+    <color name="primary">#3D3D3D</color>
+    <array name="welcome_screen_colors">
+        <item>@color/background</item>
+        <item>@color/primary</item>
+        <item>@color/accent</item>
+    </array>
 </resources>
