@@ -15,8 +15,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".welcome.WelcomeActivity" />
-        <activity android:name=".ui.DotPagerActivity" />
         <activity android:name=".android.apis.animation.AnimationCloning" />
     </application>
 
