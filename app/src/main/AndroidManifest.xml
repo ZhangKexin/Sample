@@ -16,6 +16,17 @@
             </intent-filter>
         </activity>
         <activity android:name=".android.apis.animation.AnimationCloning" />
+        <activity android:name=".android.apis.animation.AnimationLoading" />
+        <activity android:name=".android.apis.animation.AnimatorEvents" />
+
+        <activity android:name=".support_design.SupportDesignSampleActivity" />
+        <activity android:name=".support_design.TabLayoutSampleActivity" />
+        <activity android:name=".support_design.AppBarLayoutSampleActivity" />
+
+
+        <activity android:name=".pockethub.ui.WelcomeActivity" />
+        <activity android:name=".support_design.CoordinatorLayoutActivity1" />
+        <activity android:name=".support_design.CoordinatorLayoutActivity2" />
     </application>
 
 </manifest>

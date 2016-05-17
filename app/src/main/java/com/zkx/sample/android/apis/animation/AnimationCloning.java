@@ -15,7 +15,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.Button;
 import android.widget.LinearLayout;
 
 import com.zkx.sample.R;
@@ -26,26 +25,26 @@ import java.util.ArrayList;
  * Created by zkx on 16/5/10.
  */
 public class AnimationCloning extends Activity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.animation_cloning);
+
         LinearLayout container = (LinearLayout) findViewById(R.id.container);
-        final MyAnimationView animView = new MyAnimationView(this);
-        container.addView(animView);
+        final MyAnimationView animationView = new MyAnimationView(this);
+        container.addView(animationView);
 
-        Button starter = (Button) findViewById(R.id.startButton);
-        starter.setOnClickListener(new View.OnClickListener() {
-
+        findViewById(R.id.startButtonAnimatorCloning).setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                animView.startAnimation();
+                animationView.startAnimation();
             }
         });
     }
 
     public class MyAnimationView extends View implements ValueAnimator.AnimatorUpdateListener {
 
-        public final ArrayList<ShapeHolder> balls = new ArrayList<ShapeHolder>();
+        public final ArrayList<ShapeHolder> balls = new ArrayList<>();
         AnimatorSet animation = null;
         private float mDensity;
 
@@ -65,11 +64,16 @@ public class AnimationCloning extends Activity {
                 ObjectAnimator anim1 = ObjectAnimator.ofFloat(balls.get(0), "y", 0f, getHeight() - balls.get(0).getHeight()).setDuration(5000);
                 anim1.addUpdateListener(this);
 
+
                 ObjectAnimator anim2 = anim1.clone();
                 anim2.setTarget(balls.get(1));
 
+
                 ShapeHolder ball2 = balls.get(2);
-                ObjectAnimator animDown = ObjectAnimator.ofFloat(ball2, "y", 0f, getHeight() - ball2.getHeight()).setDuration(5000);
+
+
+                ObjectAnimator animDown = ObjectAnimator.ofFloat(ball2, "y", 0f, getHeight() - ball2.getHeight());
+                animDown.setDuration(5000);
                 animDown.setInterpolator(new AccelerateDecelerateInterpolator());
 
                 ObjectAnimator animUp = ObjectAnimator.ofFloat(ball2, "y", getHeight() - ball2.getHeight(), 0f).setDuration(5000);
@@ -81,13 +85,12 @@ public class AnimationCloning extends Activity {
                 animDown.addUpdateListener(this);
                 animUp.addUpdateListener(this);
 
-                AnimatorSet s2 = (AnimatorSet) s1.clone();
+                AnimatorSet s2 = s1.clone();
                 s2.setTarget(balls.get(3));
 
                 animation = new AnimatorSet();
-                animation.play(s1);
-//                animation.playTogether(anim1, anim2, s1);
-//                animation.playSequentially(s1, s2);
+                animation.playTogether(anim1, anim2, s1);
+                animation.playSequentially(s1, s2);
             }
         }
 
@@ -99,14 +102,17 @@ public class AnimationCloning extends Activity {
         private ShapeHolder addBall(float x, float y) {
             OvalShape circle = new OvalShape();
             circle.resize(50f * mDensity, 50f * mDensity);
+
             ShapeDrawable drawable = new ShapeDrawable(circle);
             ShapeHolder shapeHolder = new ShapeHolder(drawable);
             shapeHolder.setX(x - 25f);
             shapeHolder.setY(y - 25f);
+
             int red = (int) (100 + Math.random() * 155);
             int green = (int) (100 + Math.random() * 155);
             int blue = (int) (100 + Math.random() * 155);
             int color = 0xff000000 | red << 16 | green << 8 | blue;
+
             Paint paint = drawable.getPaint(); //new Paint(Paint.ANTI_ALIAS_FLAG);
             int darkColor = 0xff000000 | red / 4 << 16 | green / 4 << 8 | blue / 4;
             RadialGradient gradient = new RadialGradient(37.5f, 12.5f, 50f, color, darkColor, Shader.TileMode.CLAMP);
