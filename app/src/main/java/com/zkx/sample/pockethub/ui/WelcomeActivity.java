@@ -100,9 +100,9 @@ public class WelcomeActivity extends DotPagerActivity {
      */
     private void closeAndOpenLogin() {
         SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-//        editor.putBoolean(MainActivity.PREF_FIRST_USE, false);
+//        editor.putBoolean(LabDesignLibraryActivity.PREF_FIRST_USE, false);
         editor.apply();
-//        startActivity(new Intent(this, MainActivity.class));
+//        startActivity(new Intent(this, LabDesignLibraryActivity.class));
         finish();
     }
 
