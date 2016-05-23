@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.zkx.sample">
+
+    <uses-sdk tools:overrideLibrary="com.facebook.react" />
 
     <application
         android:allowBackup="true"
@@ -27,6 +30,10 @@
         <activity android:name=".pockethub.ui.WelcomeActivity" />
         <activity android:name=".support_design.CoordinatorLayoutActivity1" />
         <activity android:name=".support_design.CoordinatorLayoutActivity2" />
+
+        <activity android:name=".lab_design_library.LabDesignLibraryActivity" />
+
+        <activity android:name=".fbreact.MyReactActivity" />ß
     </application>
 
 </manifest>
