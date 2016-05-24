@@ -1,1 +1,1 @@
-include ':app', ':labdesignlibrary'
+include ':app', ':labdesignlibrary', ':webviewtonative', ':recyclerview'
